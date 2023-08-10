@@ -1,0 +1,13 @@
+version: '3.3'
+services:
+  localstack:
+    image: localstack/localstack
+    network_mode: "host"
+    ports:
+      - "4566:4566"
+      - "4571:4571"
+    environment:
+      - SERVICES=sqs
+      - DEBUG=1
+    volumes:
+      - "./scripts/localstack_bootstrap.sh:/etc/localstack/init/ready.d/localstack_bootstrap.sh"
